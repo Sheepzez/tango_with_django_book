@@ -306,18 +306,14 @@ Our new view is set up and ready to go - but we need to do one more thing. Our i
 	
 	    <body>
 	        <h1>Rango says...hello world!</h1>
-	        
 	        <ul>
 	            {% for category in categories %}
 	                <!-- Following line changed to add an HTML hyperlink -->
 	                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-	                
 	            {% empty %}
 	                <strong>There are no categories present.</strong>
 	            {% endfor %}
                 </ul>
-	        
-	        <a href="/rango/about/">About</a>
 	    </body>
 	</html>
 
