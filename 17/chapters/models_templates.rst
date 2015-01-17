@@ -64,20 +64,16 @@ With the view updated, all that is left for us to do is update the template ``ra
 	    <head>
 	        <title>Rango</title>
 	    </head>
-	
+
 	    <body>
 	        <h1>Rango says...hello world!</h1>
-	        
 	        <ul>
 	            {% for category in categories %}
 	                <li>{{ category.name }}</li>
-	                
 	            {% empty %}
 	                <strong>There are no categories present.</strong>
 	            {% endfor %}
                 </ul>
-	        
-	        <a href="/rango/about/">About</a>
 	    </body>
 	</html>
 
