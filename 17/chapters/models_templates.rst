@@ -67,7 +67,6 @@ With the view updated, all that is left for us to do is update the template ``ra
 	
 	    <body>
 	        <h1>Rango says...hello world!</h1>
-	
 	        
 	        <ul>
 	            {% for category in categories %}
@@ -82,11 +81,11 @@ With the view updated, all that is left for us to do is update the template ``ra
 	    </body>
 	</html>
 
-Here, we make use of Django's template language to present the data using ``if`` and ``for`` control statements. Within the ``<body>`` of the page, we test to see if ``categories`` - the name of the context variable containing our list - actually contains any categories (i.e. ``{% if categories %}``).
+Here, we make use of Django's template language to present the data a ``for`` control statement. Within the ``<body>`` of the page, this tests to see if ``categories`` - the name of the context variable containing our list - actually contains any categories. This is a shortcut Django provides for checking whether a list contains any data, or is actually there at all.
 
-If so, we proceed to construct an unordered HTML list (within the ``<ul>`` tags). The for loop (``{% for category in categories %}``) then iterates through the list of results, printing out each category's name (``{{ category.name }})`` within a pair of ``<li>`` tags to indicate a list element.
+If categories exist, we proceed to construct an unordered HTML list (within the ``<ul>`` tags). The for loop (``{% for category in categories %}``) then iterates through the list of results, printing out each category's name (``{{ category.name }})`` within a pair of ``<li>`` tags to indicate a list element.
 
-If no categories exist, a message is displayed instead indicating so.
+If no categories exist, the for loop skips to the ``{% empty %}`` block, and displays a message indicating so.
 
 As the example shows in Django's template language, all commands are enclosed within the tags ``{%`` and ``%}``, while variables are referenced within ``{{`` and ``}}`` brackets. 
 
