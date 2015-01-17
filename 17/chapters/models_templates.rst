@@ -243,15 +243,15 @@ Now let's create our template for the new view.  In ``<workspace>/tango_with_dja
 	    <body>
 	        <h1>{{ category_name }}</h1>
 	        {% if category %}
-	            {% if pages %}
 	            <ul>
 	                {% for page in pages %}
 	                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
 	                {% endfor %}
-	            </ul>
-	            {% else %}
+	            
+	            {% empty %}
 	                <strong>No pages currently in category.</strong>
-	            {% endif %}
+	            {% endfor %}
+                    </ul>
 	        {% else %}
 	            The specified category {{ category_name }} does not exist!
 	        {% endif %}
@@ -307,23 +307,24 @@ Our new view is set up and ready to go - but we need to do one more thing. Our i
 	    <head>
 	        <title>Rango</title>
 	    </head>
-
+	
 	    <body>
-	        <h1>Rango says..hello world!</h1>
-
-	        {% if categories %}
-	            <ul>
-	                {% for category in categories %}
+	        <h1>Rango says...hello world!</h1>
+	        
+	        <ul>
+	            {% for category in categories %}
 	                <!-- Following line changed to add an HTML hyperlink -->
 	                <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
-	                {% endfor %}
-	            </ul>
-	       {% else %}
-	            <strong>There are no categories present.</strong>
-	       {% endif %}
-
+	                
+	            {% empty %}
+	                <strong>There are no categories present.</strong>
+	            {% endfor %}
+                </ul>
+	        
+	        <a href="/rango/about/">About</a>
 	    </body>
 	</html>
+
 
 Here we have updated each list element (``<li>``) adding a HTML hyperlink (``<a>``). The hyperlink has an ``href`` attribute, which we use to specify the target URL defined by ``{{ category.slug }}``. 
 
